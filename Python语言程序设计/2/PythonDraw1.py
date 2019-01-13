@@ -3,6 +3,7 @@
 
 import turtle
 
+# turtle.setup(650, 350, 0, 0)
 turtle.setup(650, 350)
 turtle.penup()
 turtle.fd(-250)
