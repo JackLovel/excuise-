@@ -25,6 +25,8 @@ for i in range(len(datals)):
     else:
         t.left(datals[i][2])
 
+t.done()
+
 
 
 
