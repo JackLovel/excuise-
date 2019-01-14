@@ -8,7 +8,7 @@ t.pencolor("red")
 t.pensize(5)
 
 # read data
-# format: distance, [left/right], angle, RGB[x1, x2, x3]
+# format: distance, [left(1)/right(0)], angle, RGB[x1, x2, x3]
 datals = []
 f = open("data.txt")
 for line in f:
