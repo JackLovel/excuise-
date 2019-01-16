@@ -1,0 +1,7 @@
+*** configure
+
+#+BEGIN_SRC 
+# deepin linux and racket language 
+$  sudo apt-get install racket 
+#+END_SRC
+
