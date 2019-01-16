@@ -17,5 +17,6 @@
 (define (sum-of-max x y z)
   (- (sum-three x y z) (min-three x y z)))
 
-(sum-of-max 5 2 4)
-
+(sum-of-max 5 2 4) ;; 9
+(sum-of-max 1 2 3) ;; 5
+(sum-of-max 4 3 2) ;; 6
