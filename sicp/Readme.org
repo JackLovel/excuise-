@@ -5,3 +5,32 @@
 $  sudo apt-get install racket 
 #+END_SRC
 
+
+*** note
+
+- chapter1
+
+计算阶乘的两种方法：　递归计算过程　和　线性递归过程
+#+BEGIN_SRC 
+(define (factorial n)
+  (if (= n 1)
+      1
+      (* n (factorial (- n 1)))))
+
+
+(factorial 6) ;; 150
+#+END_SRC
+
+#+BEGIN_SRC 
+(define (factorial n)
+  (fact-iter 1 1 n))
+
+(define (fact-iter product counter max-count)
+  (if (> counter max-count)
+      product
+      (fact-iter (* counter product)
+                 (+ counter 1)
+                 max-count)))
+
+(factorial 6)
+#+END_SRC
