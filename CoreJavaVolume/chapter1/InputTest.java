@@ -9,7 +9,7 @@ public class InputTest {
         String name = in.nextLine(); // 输入一行
 
         // get second input
-        System.out.println("How old are you? ");
+        System.out.print("How old are you? ");
         int age = in.nextInt();
 
         // display output on console
