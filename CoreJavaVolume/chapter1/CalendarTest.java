@@ -1,5 +1,3 @@
-package com.chapter1;
-
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 

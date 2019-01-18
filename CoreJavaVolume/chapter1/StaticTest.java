@@ -1,5 +1,3 @@
-package com.chapter1;
-
 public class StaticTest {
     public static void main(String[] args) {
         Employee2[] staff = new Employee2[3];

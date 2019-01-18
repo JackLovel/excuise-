@@ -1,11 +1,8 @@
-package com.chapter1;
-
 import java.util.Random;
 
 /**
  * @author wcc
  * @version 1.1
- * @see com.chapter1.StaticTest
  */
 public class ConstructorTest {
     public static void main(String[] args) {

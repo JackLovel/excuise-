@@ -1,5 +1,3 @@
-package com.chapter1;
-
 import java.time.LocalDate;
 
 public class EmployeeTest {
