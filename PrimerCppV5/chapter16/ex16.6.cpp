@@ -3,26 +3,25 @@
 
 using namespace std;
 
-namespace ch16_5 {
-    template <typename T, unsigned size>
-    T* begin_def(T(&arr)[size])
+namespace ch16 {
+    template<typename T, unsigned size>
+    T* begin_arr(T (&array)[size])
     {
-        return arr;
+        return array;
     }
 
-    template <typename T, unsigned size>
-    T* end_def(T(&arr)[size])
+    template<typename T, unsigned size>
+    T* end_arr(T (&array)[size])
     {
-        return arr + size;
+        return array + size;
     }
+
 }
 
-
 int main()
-{
-    string s[] = {"ssss", "ss", "sssszzz"};
-    cout << *(ch16_5::begin_def(s) + 1) << std::endl;
-    cout << *(ch16_5::end_def(s) - 1) << endl;
+{    
+    string s[] = {"ssss", "aa", "ssssss", "kkkkkk"};
 
-    return 0;
+    cout << *(ch16::begin_arr(s)) << endl;
+    cout << *(ch16::end_arr(s) - 1) << endl;
 }
