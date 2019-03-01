@@ -1,0 +1,4 @@
+** reference
+
+[[http://zetcode.com/gui/qt5][tutorial]]
+
