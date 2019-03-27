@@ -44,14 +44,14 @@ def get_content(url):
         with open(file_path, 'a') as f:
             f.write("小说名: {:<} \t 小说地址： {:<}".format(title, link))
 
-
     for cate in history_finished_list:
         name = cate.find('div', class_='toptab').span.string
         with open(file_path, 'a') as f:
             f.write("\n小说种类： {} \n".format(name))
 
+            #ipdb.set_trace()
             general_list = cate.find(style='display： block;')
-            book_list = general_list.find('li')
+            book_list = general_list.find_all('li')
             for book in book_list:
                 link = "http://www.qu.la/" + book.a['href']
                 title = book.a['title']
@@ -62,7 +62,7 @@ def get_content(url):
     return url_list
 
 
-def get_text_url(url):
+def get_txt_url(url):
     """
     获取该小说每个章节的地址
     并创建小说资料
@@ -74,11 +74,52 @@ def get_text_url(url):
     txt_name = soup.find('h1').txt
     text_name = "/home/w/Desktop/小说/{}.txt".format(txt_name)
     with open(text_name, "a+") as f:
-        f.write('小说标题： {}')
+        f.write('小说标题： {} \n'.format(txt_name))
+
+    for url in lista:
+        url_list.append('http://www.qu.la' + url.a['href'])
+
+    return url_list, txt_name
+
+
+def get_one_txt(url, txt_name):
+    """
+    获取小说每个章节的文本
+    并写入到本地
+    """
+    html = get_html(url).replace('<br/>', '\n')
+    soup = BeautifulSoup(html, 'html.parser')
+    try:
+        txt = soup.find('div', id='content').text.replace('chaptererror();', '')
+        title = soup.find('title').text;
+
+        with open('/home/w/Desktop/小说/{}.txt'.format(txt_name), "a") as f:
+            f.write(title + '\n\n')
+            f.write(txt)
+            print('当前小说： {} 当前章节 {} 已经下载完毕'.format(txt_name, title))
+
+    except:
+        print('something error')
+
+def get_all_txt(url_list):
+    """
+    下载排行榜里所有的小说
+    并保存为txt格式
+    """
+    for url in url_list:
+        # 使利获取当前小说的所有章节的目录
+        page_list, txt_name = get_txt_url(url)
+        for page_url in page_list:
+            # 遍历每一人篇小说， 并下载到目录
+            get_one_txt(page_url, txt_name)
+            print('当前进度 {}%'.format(url_list.index(url) / len(url_list) * 100))
+
 
 def main():
-    url = "http://www.qu.la/paihangbang/"
-    get_content(url)
-    
+    # 排行榜地址
+    base_url = "http://www.qu.la/paihangbang/"
+    # 获取排行榜中所有小说的url连接
+    url_list = get_content(base_url)
+    get_all_txt(url_list)
 
 main()
