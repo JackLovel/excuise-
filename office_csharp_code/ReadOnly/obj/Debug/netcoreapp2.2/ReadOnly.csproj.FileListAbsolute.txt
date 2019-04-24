@@ -1,0 +1,11 @@
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ReadOnly/bin/Debug/netcoreapp2.2/ReadOnly.deps.json
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ReadOnly/bin/Debug/netcoreapp2.2/ReadOnly.runtimeconfig.json
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ReadOnly/bin/Debug/netcoreapp2.2/ReadOnly.runtimeconfig.dev.json
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ReadOnly/bin/Debug/netcoreapp2.2/ReadOnly.dll
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ReadOnly/bin/Debug/netcoreapp2.2/ReadOnly.pdb
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ReadOnly/obj/Debug/netcoreapp2.2/ReadOnly.csprojAssemblyReference.cache
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ReadOnly/obj/Debug/netcoreapp2.2/ReadOnly.csproj.CoreCompileInputs.cache
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ReadOnly/obj/Debug/netcoreapp2.2/ReadOnly.AssemblyInfoInputs.cache
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ReadOnly/obj/Debug/netcoreapp2.2/ReadOnly.AssemblyInfo.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ReadOnly/obj/Debug/netcoreapp2.2/ReadOnly.dll
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ReadOnly/obj/Debug/netcoreapp2.2/ReadOnly.pdb
