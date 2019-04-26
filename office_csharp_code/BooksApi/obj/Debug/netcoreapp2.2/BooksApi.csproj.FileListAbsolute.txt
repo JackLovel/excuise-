@@ -1,0 +1,14 @@
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/bin/Debug/netcoreapp2.2/BooksApi.deps.json
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/bin/Debug/netcoreapp2.2/BooksApi.runtimeconfig.json
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/bin/Debug/netcoreapp2.2/BooksApi.runtimeconfig.dev.json
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/bin/Debug/netcoreapp2.2/BooksApi.dll
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/bin/Debug/netcoreapp2.2/BooksApi.pdb
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/obj/Debug/netcoreapp2.2/BooksApi.csprojAssemblyReference.cache
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/obj/Debug/netcoreapp2.2/BooksApi.csproj.CoreCompileInputs.cache
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/obj/Debug/netcoreapp2.2/BooksApi.RazorAssemblyInfo.cache
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/obj/Debug/netcoreapp2.2/BooksApi.RazorAssemblyInfo.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/obj/Debug/netcoreapp2.2/BooksApi.AssemblyInfoInputs.cache
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/obj/Debug/netcoreapp2.2/BooksApi.AssemblyInfo.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/obj/Debug/netcoreapp2.2/BooksApi.RazorTargetAssemblyInfo.cache
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/obj/Debug/netcoreapp2.2/BooksApi.dll
+/home/w/Documents/CodePro/excuise-/office_csharp_code/BooksApi/obj/Debug/netcoreapp2.2/BooksApi.pdb
