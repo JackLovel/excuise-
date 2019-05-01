@@ -40,3 +40,8 @@
 /home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Students/Edit.g.cshtml.cs
 /home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Students/Index.g.cshtml.cs
 /home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Home/About.g.cshtml.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Courses/Create.g.cshtml.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Courses/Delete.g.cshtml.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Courses/Details.g.cshtml.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Courses/Edit.g.cshtml.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Courses/Index.g.cshtml.cs

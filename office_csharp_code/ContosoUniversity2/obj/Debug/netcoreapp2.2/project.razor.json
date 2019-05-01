@@ -2759,6 +2759,11 @@
   "RootNamespace": "ContosoUniversity2",
   "Documents": [
     {
+      "FilePath": "Views/Courses/Delete.cshtml",
+      "TargetPath": "Views/Courses/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Students/Details.cshtml",
       "TargetPath": "Views/Students/Details.cshtml",
       "FileKind": "mvc"
@@ -2809,6 +2814,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Courses/Create.cshtml",
+      "TargetPath": "Views/Courses/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Students/Index.cshtml",
       "TargetPath": "Views/Students/Index.cshtml",
       "FileKind": "mvc"
@@ -2824,6 +2834,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Courses/Index.cshtml",
+      "TargetPath": "Views/Courses/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Shared/Error.cshtml",
       "TargetPath": "Views/Shared/Error.cshtml",
       "FileKind": "mvc"
@@ -2834,6 +2849,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Courses/Details.cshtml",
+      "TargetPath": "Views/Courses/Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Students/Delete.cshtml",
       "TargetPath": "Views/Students/Delete.cshtml",
       "FileKind": "mvc"
@@ -2841,6 +2861,11 @@
     {
       "FilePath": "Views/Students_bak/Create.cshtml",
       "TargetPath": "Views/Students_bak/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Courses/Edit.cshtml",
+      "TargetPath": "Views/Courses/Edit.cshtml",
       "FileKind": "mvc"
     },
     {

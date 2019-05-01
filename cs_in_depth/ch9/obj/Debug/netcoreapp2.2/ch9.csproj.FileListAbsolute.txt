@@ -1,0 +1,11 @@
+/home/w/Documents/CodePro/excuise-/cs_in_depth/ch9/bin/Debug/netcoreapp2.2/ch9.deps.json
+/home/w/Documents/CodePro/excuise-/cs_in_depth/ch9/bin/Debug/netcoreapp2.2/ch9.runtimeconfig.json
+/home/w/Documents/CodePro/excuise-/cs_in_depth/ch9/bin/Debug/netcoreapp2.2/ch9.runtimeconfig.dev.json
+/home/w/Documents/CodePro/excuise-/cs_in_depth/ch9/bin/Debug/netcoreapp2.2/ch9.dll
+/home/w/Documents/CodePro/excuise-/cs_in_depth/ch9/bin/Debug/netcoreapp2.2/ch9.pdb
+/home/w/Documents/CodePro/excuise-/cs_in_depth/ch9/obj/Debug/netcoreapp2.2/ch9.csprojAssemblyReference.cache
+/home/w/Documents/CodePro/excuise-/cs_in_depth/ch9/obj/Debug/netcoreapp2.2/ch9.csproj.CoreCompileInputs.cache
+/home/w/Documents/CodePro/excuise-/cs_in_depth/ch9/obj/Debug/netcoreapp2.2/ch9.AssemblyInfoInputs.cache
+/home/w/Documents/CodePro/excuise-/cs_in_depth/ch9/obj/Debug/netcoreapp2.2/ch9.AssemblyInfo.cs
+/home/w/Documents/CodePro/excuise-/cs_in_depth/ch9/obj/Debug/netcoreapp2.2/ch9.dll
+/home/w/Documents/CodePro/excuise-/cs_in_depth/ch9/obj/Debug/netcoreapp2.2/ch9.pdb

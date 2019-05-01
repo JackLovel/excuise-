@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-// 数据模型快照
 namespace ContosoUniversity2.Migrations
 {
     [DbContext(typeof(SchoolContext))]
@@ -24,11 +23,51 @@ namespace ContosoUniversity2.Migrations
 
                     b.Property<int>("Credits");
 
-                    b.Property<string>("Title");
+                    b.Property<int>("DepartmentID");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(50);
 
                     b.HasKey("CourseID");
 
+                    b.HasIndex("DepartmentID");
+
                     b.ToTable("Course");
+                });
+
+            modelBuilder.Entity("ContosoUniversity2.Models.CourseAssignment", b =>
+                {
+                    b.Property<int>("CourseID");
+
+                    b.Property<int>("InstructorID");
+
+                    b.HasKey("CourseID", "InstructorID");
+
+                    b.HasIndex("InstructorID");
+
+                    b.ToTable("CourseAssignment");
+                });
+
+            modelBuilder.Entity("ContosoUniversity2.Models.Department", b =>
+                {
+                    b.Property<int>("DepartmentID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("Budget")
+                        .HasColumnType("money");
+
+                    b.Property<int?>("InstructorID");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.HasKey("DepartmentID");
+
+                    b.HasIndex("InstructorID");
+
+                    b.ToTable("Department");
                 });
 
             modelBuilder.Entity("ContosoUniversity2.Models.Enrollment", b =>
@@ -51,6 +90,39 @@ namespace ContosoUniversity2.Migrations
                     b.ToTable("Enrollment");
                 });
 
+            modelBuilder.Entity("ContosoUniversity2.Models.Instructor", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FirstMidName")
+                        .IsRequired()
+                        .HasColumnName("FirstName")
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("HireDate");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Instructor");
+                });
+
+            modelBuilder.Entity("ContosoUniversity2.Models.OfficeAssignment", b =>
+                {
+                    b.Property<int>("InstructorID");
+
+                    b.Property<string>("Location")
+                        .HasMaxLength(50);
+
+                    b.HasKey("InstructorID");
+
+                    b.ToTable("OfficeAssignment");
+                });
+
             modelBuilder.Entity("ContosoUniversity2.Models.Student", b =>
                 {
                     b.Property<int>("ID")
@@ -58,13 +130,45 @@ namespace ContosoUniversity2.Migrations
 
                     b.Property<DateTime>("EnrollmentDate");
 
-                    b.Property<string>("FirstMidName");
+                    b.Property<string>("FirstMidName")
+                        .IsRequired()
+                        .HasColumnName("FirstName")
+                        .HasMaxLength(50);
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .HasMaxLength(50);
 
                     b.HasKey("ID");
 
                     b.ToTable("Student");
+                });
+
+            modelBuilder.Entity("ContosoUniversity2.Models.Course", b =>
+                {
+                    b.HasOne("ContosoUniversity2.Models.Department", "Department")
+                        .WithMany("Courses")
+                        .HasForeignKey("DepartmentID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ContosoUniversity2.Models.CourseAssignment", b =>
+                {
+                    b.HasOne("ContosoUniversity2.Models.Course", "Course")
+                        .WithMany("CourseAssginments")
+                        .HasForeignKey("CourseID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ContosoUniversity2.Models.Instructor", "Instructor")
+                        .WithMany("CourseAssignments")
+                        .HasForeignKey("InstructorID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ContosoUniversity2.Models.Department", b =>
+                {
+                    b.HasOne("ContosoUniversity2.Models.Instructor", "Administrator")
+                        .WithMany()
+                        .HasForeignKey("InstructorID");
                 });
 
             modelBuilder.Entity("ContosoUniversity2.Models.Enrollment", b =>
@@ -77,6 +181,14 @@ namespace ContosoUniversity2.Migrations
                     b.HasOne("ContosoUniversity2.Models.Student", "Student")
                         .WithMany("Enrollments")
                         .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ContosoUniversity2.Models.OfficeAssignment", b =>
+                {
+                    b.HasOne("ContosoUniversity2.Models.Instructor", "Instructor")
+                        .WithOne("OfficeAssignment")
+                        .HasForeignKey("ContosoUniversity2.Models.OfficeAssignment", "InstructorID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
