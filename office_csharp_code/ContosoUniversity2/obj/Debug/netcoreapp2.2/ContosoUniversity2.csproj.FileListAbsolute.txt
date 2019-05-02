@@ -45,3 +45,8 @@
 /home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Courses/Details.g.cshtml.cs
 /home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Courses/Edit.g.cshtml.cs
 /home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Courses/Index.g.cshtml.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Instructors/Create.g.cshtml.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Instructors/Delete.g.cshtml.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Instructors/Details.g.cshtml.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Instructors/Edit.g.cshtml.cs
+/home/w/Documents/CodePro/excuise-/office_csharp_code/ContosoUniversity2/obj/Debug/netcoreapp2.2/Razor/Views/Instructors/Index.g.cshtml.cs

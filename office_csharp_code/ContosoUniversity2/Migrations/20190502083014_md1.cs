@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ContosoUniversity2.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class md1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +12,7 @@ namespace ContosoUniversity2.Migrations
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySQL:AutoIncrement", true),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     HireDate = table.Column<DateTime>(nullable: false)
@@ -28,7 +27,7 @@ namespace ContosoUniversity2.Migrations
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySQL:AutoIncrement", true),
                     LastName = table.Column<string>(maxLength: 50, nullable: true),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     EnrollmentDate = table.Column<DateTime>(nullable: false)
@@ -43,9 +42,8 @@ namespace ContosoUniversity2.Migrations
                 columns: table => new
                 {
                     DepartmentID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySQL:AutoIncrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: true),
-                    Budget = table.Column<decimal>(type: "money", nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
                     InstructorID = table.Column<int>(nullable: true)
                 },
@@ -127,7 +125,7 @@ namespace ContosoUniversity2.Migrations
                 columns: table => new
                 {
                     EnrollmentID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySQL:AutoIncrement", true),
                     CourseID = table.Column<int>(nullable: false),
                     StudentID = table.Column<int>(nullable: false),
                     Grade = table.Column<int>(nullable: true)
