@@ -14,9 +14,8 @@ namespace ContosoUniversity2.Models
         public string Name { get; set; }
 
         
-        [NotMapped]
-        [Column(TypeName = "money")]
         [DataType(DataType.Currency)]
+        [Column(TypeName = "money")]
         public decimal Budget { get; set; }
 
         [DataType(DataType.Date)]
@@ -26,8 +25,8 @@ namespace ContosoUniversity2.Models
 
         public int? InstructorID { get; set; }
 
-       // [Timestamp]
-       // public byte[] RowVersion { get; set; }
+       [Timestamp]
+       public byte[] RowVersion { get; set; }
 
         public Instructor Administrator { get; set; }
         public ICollection<Course> Courses { get; set; }

@@ -82,26 +82,35 @@ namespace ContosoUniversity2.Controllers
         // GET: Instructors/Create
         public IActionResult Create()
         {
+            var instructor = new Instructor();
+            instructor.CourseAssignments = new List<CourseAssignment>();
+            PopulateAssignedCourseData(instructor);
             return View();
         }
 
-        // POST: Instructors/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,LastName,FirstMidName,HireDate")] Instructor instructor)
+        public async Task<IActionResult> Create([Bind("FirstMidName,HireDate,LastName,OfficeAssignment")] Instructor instructor, string[] selectedCourses)
         {
+            if (selectedCourses != null) 
+            {
+                instructor.CourseAssignments = new List<CourseAssignment>();
+                foreach (var course in selectedCourses) 
+                {
+                    var courseToAdd = new CourseAssignment { InstructorID = instructor.ID, CourseID = int.Parse(course) };
+                    instructor.CourseAssignments.Add(courseToAdd);
+                }
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(instructor);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            PopulateAssignedCourseData(instructor);
             return View(instructor);
         }
 
-        // GET: Instructors/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -109,49 +118,111 @@ namespace ContosoUniversity2.Controllers
                 return NotFound();
             }
 
-            var instructor = await _context.Instructors.FindAsync(id);
+            var instructor = await _context.Instructors
+                .Include(i => i.OfficeAssignment) // 加载 Instructor 实体的 OfficeAssignment 导航属性
+                .Include(i => i.CourseAssignments).ThenInclude(i => i.Course)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (instructor == null)
             {
                 return NotFound();
             }
+            PopulateAssignedCourseData(instructor);
             return View(instructor);
         }
 
-        // POST: Instructors/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        private void PopulateAssignedCourseData(Instructor instructor) 
+        {
+            var allCourses = _context.Courses;
+            var instructorCourses = new HashSet<int>(instructor.CourseAssignments.Select(c => c.CourseID));
+            var viewModel = new List<AssignedCourseData>();
+            foreach (var course in allCourses) 
+            {
+                viewModel.Add(new AssignedCourseData {
+                    CourseID = course.CourseID,
+                    Title = course.Title,
+                    Assigned = instructorCourses.Contains(course.CourseID)
+                });
+            }
+            ViewData["Courses"] = viewModel;
+        }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstMidName,HireDate")] Instructor instructor)
+        public async Task<IActionResult> Edit(int? id, string[] selectedCourses)
         {
-            if (id != instructor.ID)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            var instructorToUpdate = await _context.Instructors
+                .Include(i => i.OfficeAssignment) 
+                .Include(i => i.CourseAssignments)
+                    .ThenInclude(i => i.Course)
+                .FirstOrDefaultAsync(s => s.ID == id);
+
+            if (await TryUpdateModelAsync<Instructor>(
+                instructorToUpdate,
+                "",
+                i => i.FirstMidName, i => i.LastName, i => i.HireDate, i => i.OfficeAssignment))
             {
+                if (string.IsNullOrWhiteSpace(instructorToUpdate.OfficeAssignment?.Location))
+                {
+                    instructorToUpdate.OfficeAssignment = null;
+                }
+                UpdateInstructorCourses(selectedCourses, instructorToUpdate);
+                PopulateAssignedCourseData(instructorToUpdate);
                 try
                 {
-                    _context.Update(instructor);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();  // 将更改保存到数据库中
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (DbUpdateException /*ex */)
                 {
-                    if (!InstructorExists(instructor.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ModelState.AddModelError("", "Unable to save changes." + 
+                        "Try again, and if problem persists, " + 
+                        "see  you system administrator.");
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(instructor);
+            UpdateInstructorCourses(selectedCourses, instructorToUpdate);
+            PopulateAssignedCourseData(instructorToUpdate);
+            return View(instructorToUpdate);
         }
 
+        private void UpdateInstructorCourses(string[] selectedCourses, Instructor instructorToUpdate)
+        {
+            if (selectedCourses == null)
+            {
+                // 未选中任何复选框，则将使用空集初始化　CourseAssignments
+                instructorToUpdate.CourseAssignments = new List<CourseAssignment>();
+                return;
+            }
+
+            // 当前分配给讲师的课程
+            var selectedCoursesHS = new HashSet<string>(selectedCourses); 
+            // 视图中处于选中状态的课程
+            var instructorCourses = new HashSet<int>
+                (instructorToUpdate.CourseAssignments.Select(c => c.Course.CourseID));
+            foreach(var course in _context.Courses) 
+            {
+                if (selectedCoursesHS.Contains(course.CourseID.ToString()))
+                {
+                    if (!instructorCourses.Contains(course.CourseID)) 
+                    {
+                        instructorToUpdate.CourseAssignments.Add(new CourseAssignment { InstructorID = instructorToUpdate.ID, CourseID = course.CourseID});
+                    }
+                }
+                else 
+                {
+                    if (instructorCourses.Contains(course.CourseID))
+                    {
+                        CourseAssignment couseToRemove = instructorToUpdate.CourseAssignments.FirstOrDefault(i => i.CourseID == course.CourseID);
+                        _context.Remove(course);
+                    }
+                }
+            }
+        }
         // GET: Instructors/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
