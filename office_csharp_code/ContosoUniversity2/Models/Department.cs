@@ -13,9 +13,9 @@ namespace ContosoUniversity2.Models
         [StringLength(50, MinimumLength = 3)]
         public string Name { get; set; }
 
-        
-        [DataType(DataType.Currency)]
-        [Column(TypeName = "money")]
+        // [NotMapped]
+        // [DataType(DataType.Currency)]
+        // [Column(TypeName = "money")]
         public decimal Budget { get; set; }
 
         [DataType(DataType.Date)]
@@ -25,6 +25,7 @@ namespace ContosoUniversity2.Models
 
         public int? InstructorID { get; set; }
 
+       // RowVersion 的跟踪属性
        [Timestamp]
        public byte[] RowVersion { get; set; }
 

@@ -9,14 +9,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContosoUniversity2.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20190502083014_md1")]
-    partial class md1
+    [Migration("20190504004441_md")]
+    partial class md
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("ContosoUniversity2.Models.Course", b =>
                 {
@@ -54,10 +55,16 @@ namespace ContosoUniversity2.Migrations
                     b.Property<int>("DepartmentID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<decimal>("Budget");
+
                     b.Property<int?>("InstructorID");
 
                     b.Property<string>("Name")
                         .HasMaxLength(50);
+
+                    b.Property<DateTime?>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<DateTime>("StartDate");
 

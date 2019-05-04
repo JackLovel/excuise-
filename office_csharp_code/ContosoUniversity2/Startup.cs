@@ -11,8 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ContosoUniversity2.Data;
 using Microsoft.EntityFrameworkCore;
-// using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using MySql.Data.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+//using MySql.Data.EntityFrameworkCore;
+using Microsoft.AspNetCore.Html;
 
 namespace ContosoUniversity2
 {
@@ -35,9 +36,10 @@ namespace ContosoUniversity2
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //services.AddSingleton(Html.Create(UnicodeRanges.All));
             // 注册 SchoolContext 
             services.AddDbContext<SchoolContext>(options => 
-                options.UseMySQL(Configuration.GetConnectionString("MySql")));
+                options.UseMySql(Configuration.GetConnectionString("MySql")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

@@ -14,7 +14,8 @@ namespace ContosoUniversity2.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("ContosoUniversity2.Models.Course", b =>
                 {
@@ -52,10 +53,16 @@ namespace ContosoUniversity2.Migrations
                     b.Property<int>("DepartmentID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<decimal>("Budget");
+
                     b.Property<int?>("InstructorID");
 
                     b.Property<string>("Name")
                         .HasMaxLength(50);
+
+                    b.Property<DateTime?>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<DateTime>("StartDate");
 
@@ -86,27 +93,6 @@ namespace ContosoUniversity2.Migrations
                     b.ToTable("Enrollment");
                 });
 
-            modelBuilder.Entity("ContosoUniversity2.Models.Instructor", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FirstMidName")
-                        .IsRequired()
-                        .HasColumnName("FirstName")
-                        .HasMaxLength(50);
-
-                    b.Property<DateTime>("HireDate");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Instructor");
-                });
-
             modelBuilder.Entity("ContosoUniversity2.Models.OfficeAssignment", b =>
                 {
                     b.Property<int>("InstructorID");
@@ -119,12 +105,13 @@ namespace ContosoUniversity2.Migrations
                     b.ToTable("OfficeAssignment");
                 });
 
-            modelBuilder.Entity("ContosoUniversity2.Models.Student", b =>
+            modelBuilder.Entity("ContosoUniversity2.Models.Person", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("EnrollmentDate");
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
 
                     b.Property<string>("FirstMidName")
                         .IsRequired()
@@ -132,11 +119,36 @@ namespace ContosoUniversity2.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.HasKey("ID");
 
+                    b.ToTable("Person");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
+                });
+
+            modelBuilder.Entity("ContosoUniversity2.Models.Instructor", b =>
+                {
+                    b.HasBaseType("ContosoUniversity2.Models.Person");
+
+                    b.Property<DateTime>("HireDate");
+
+                    b.ToTable("Instructor");
+
+                    b.HasDiscriminator().HasValue("Instructor");
+                });
+
+            modelBuilder.Entity("ContosoUniversity2.Models.Student", b =>
+                {
+                    b.HasBaseType("ContosoUniversity2.Models.Person");
+
+                    b.Property<DateTime>("EnrollmentDate");
+
                     b.ToTable("Student");
+
+                    b.HasDiscriminator().HasValue("Student");
                 });
 
             modelBuilder.Entity("ContosoUniversity2.Models.Course", b =>

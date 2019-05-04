@@ -2819,6 +2819,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Departments/Index.cshtml",
+      "TargetPath": "Views/Departments/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/_ViewImports.cshtml",
       "TargetPath": "Views/_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -2834,6 +2839,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Departments/Edit.cshtml",
+      "TargetPath": "Views/Departments/Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Home/About.cshtml",
       "TargetPath": "Views/Home/About.cshtml",
       "FileKind": "mvc"
@@ -2841,6 +2851,11 @@
     {
       "FilePath": "Views/Students_bak/Details.cshtml",
       "TargetPath": "Views/Students_bak/Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Departments/Delete.cshtml",
+      "TargetPath": "Views/Departments/Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2884,8 +2899,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Departments/Create.cshtml",
+      "TargetPath": "Views/Departments/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Students_bak/Create.cshtml",
       "TargetPath": "Views/Students_bak/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Departments/Details.cshtml",
+      "TargetPath": "Views/Departments/Details.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -22,14 +22,24 @@
 				var o = {
 					image: image,
 					x: 100,
-					y: 200,
-					speed: 10,
+					y: 250,
+					speed: 15,
+				}
+				var paddle = o
+				o.move = function(x) {
+					if (x < 0) {
+						x = 0
+					}
+					if (x >  400 - paddle.image.width) {
+						x =  400 - paddle.image.width
+					}
+					o.x = x
 				}
 				o.moveLeft = function() {
-					o.x -= o.speed
+					o.move(paddle.x -= paddle.speed) 
 				}
 				o.moveRight = function() {
-					o.x += o.speed
+					o.move(paddle.x += paddle.speed)
 				}
 				o.collide = function(ball) {
 					if (ball.y + ball.image.height > o.y) {
@@ -68,9 +78,38 @@
 						o.y += o.speedY
 					}
 				}
+				o.反弹 = function() {
+					o.speedY *= -1
+				}
 				return o
 			}
-
+			var rectIntersects = function(a, b) {
+				var o = a
+				if (b.y > o.y &&　b.y < o.y + o.image.height) {
+					if (b.x > o.x && b.x < o.x + o.image.width) {
+						return true
+					}
+				}
+				return false
+			}
+			var Block = function() {
+				var image = imageFromPath('block.png')
+				var o = {
+					image: image,
+					x: 100,
+					y: 100,
+					w: 51,
+					h: 21,
+					alive: true,
+				}				
+				o.kill = function() {
+					o.alive = false
+				}
+				o.collide = function(b) {
+					return  o.alive && (rectIntersects(o, b) || rectIntersects(b, o))
+				}
+				return o
+			}
 			var GuaGame = function() {
 				var g = {
 					actions: {},
@@ -121,7 +160,16 @@
 				//var paddle = Paddle()
 				paddle = Paddle()
 				var ball = Ball()
+				var block = Block()
 				
+				var blocks = []
+				for (var i = 0; i < 3; i++) {
+					var b = Block()
+					b.x = i * 150
+					b.y = 50
+					blocks.push(b)
+				}
+
 				game.registerAction('a', function() {
 					paddle.moveLeft()
 				})
@@ -136,13 +184,29 @@
 					ball.move()
 					// 判断相撞
 					if (paddle.collide(ball)) {
-						ball.speedY *= -1
+						ball.反弹()
 					}
+					for (var i = 0; i < blocks.length; i++){
+						var block = blocks[i]
+						if (block.collide(ball)) {
+							block.kill()
+							ball.反弹()
+						}
+					}					
 				}
+
 				game.draw = function() {
 					// draw 
 					game.drawImage(paddle)
 					game.drawImage(ball)
+
+					// 判断　ball 和　blocks 相撞
+					for (var i = 0; i < blocks.length; i++){
+						var block = blocks[i]
+						if (block.alive) {
+							game.drawImage(block)
+						}
+					}
 				}
 			}
 		

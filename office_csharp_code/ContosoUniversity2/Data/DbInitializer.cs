@@ -6,7 +6,7 @@ using ContosoUniversity2.Models;
 
 namespace ContosoUniversity2.Data
 {
-    public static class DbInitializer
+    public static class DbInitializer   
     {
         public static void Initialize(SchoolContext context)
         {
@@ -20,8 +20,8 @@ namespace ContosoUniversity2.Data
 
             var students = new Student[]
             {
-                new Student { FirstMidName = "Carson",   LastName = "Alexander",
-                    EnrollmentDate = DateTime.Parse("2010-09-01") },
+                new Student { FirstMidName = "Carson", LastName = "Alexander", 
+                    EnrollmentDate = DateTime.Parse("2010-09-01")},
                 new Student { FirstMidName = "Meredith", LastName = "Alonso",
                     EnrollmentDate = DateTime.Parse("2012-09-01") },
                 new Student { FirstMidName = "Arturo",   LastName = "Anand",
