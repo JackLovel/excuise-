@@ -1,16 +1,16 @@
-var Block = function(position) {
-    // position 是 [0, 0] 格式
+var Block = function(game, position) {
+    // positon 是 [0, 0] 格式
     var p = position
-    var image = imageFromPath('block.png')
+    var img = game.imageByName('block')
     var o = {
-        image: image,
         x: p[0],
         y: p[1],
-        w: 51,
-        h: 21,
         alive: true,
         lifes: p[2] || 1,
-    }				
+    }
+    o.image = img.image
+    o.w = img.w
+    o.h = img.h
     o.kill = function() {
         o.lifes--
         if (o.lifes < 1) {
@@ -18,7 +18,8 @@ var Block = function(position) {
         }
     }
     o.collide = function(b) {
-        return  o.alive && (rectIntersects(o, b) || rectIntersects(b, o))
+        // log('block', o.alive, b)
+        return o.alive && (rectIntersects(o, b) || rectIntersects(b, o))
     }
     return o
 }
