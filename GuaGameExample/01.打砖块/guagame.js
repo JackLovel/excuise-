@@ -29,7 +29,7 @@ var GuaGame = function(fps, images, runCallback) {
     // timer
     window.fps = 30
     var runloop = function() {
-        log(window.fps)
+        // log(window.fps)
         // events
         var actions = Object.keys(g.actions)
         for (var i = 0; i < actions.length; i++) {
@@ -65,15 +65,15 @@ var GuaGame = function(fps, images, runCallback) {
             g.images[name] = img
             // 所有图片都成功载入之后, 调用 run
             loads.push(1)
-            log('load images', loads.length, names.length)
+            //log('load images', loads.length, names.length)
             if (loads.length == names.length) {
-                log('load images', g.images)
+                // log('load images', g.images)
                 g.run()
             }
         }
     }
     g.imageByName = function(name) {
-        log('image by name', g.images)
+        //log('image by name', g.images)
         var img = g.images[name]
         var image = {
             w: img.width,
