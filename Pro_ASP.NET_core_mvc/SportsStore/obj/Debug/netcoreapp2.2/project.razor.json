@@ -2774,11 +2774,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Home/Privacy.cshtml",
-      "TargetPath": "Views/Home/Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "Views/_ViewImports.cshtml",
       "TargetPath": "Views/_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -2791,6 +2786,11 @@
     {
       "FilePath": "Views/Product/List.cshtml",
       "TargetPath": "Views/Product/List.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Shared/ProductSummary.cshtml",
+      "TargetPath": "Views/Shared/ProductSummary.cshtml",
       "FileKind": "mvc"
     },
     {
