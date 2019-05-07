@@ -21,6 +21,7 @@ var Scene = function(game) {
 		ball.fire()
 	})
 
+
 	s.draw = function() {
 		// draw 背景
 		game.context.fillStyle = "#554";
