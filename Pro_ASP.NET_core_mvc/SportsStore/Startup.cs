@@ -29,7 +29,7 @@ namespace SportsStore
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddTransient<IProductRepository, FakeProductRepository>();
-            services.AddDbContext<ApplicationDbContext>(options => 
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("MySql")));
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddMvc();
@@ -38,17 +38,6 @@ namespace SportsStore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            // if (env.IsDevelopment())
-            // {
-            //     app.UseDeveloperExceptionPage();
-            // }
-            // else
-            // {
-            //     app.UseExceptionHandler("/Home/Error");
-            //     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-            //     app.UseHsts();
-            // }
-            //app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -59,7 +48,7 @@ namespace SportsStore
                 routes.MapRoute(
                     name: "pagination",
                     template: "Products/Page{productPage}",
-                    defaults: new { Controller = "Product", action = "List" });                
+                    defaults: new { Controller = "Product", action = "List" });
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
