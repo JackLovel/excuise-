@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+watchdog = "*"
+
+[packages]
+flask = "*"
+pylint = "*"
+python-dotenv = "*"
+flask-wtf = "*"
+flask-ckeditor = "*"
+flask-sqlalchemy = "*"
+pylint-flask = "*"
+flask-migrate = "*"
+
+[requires]
+python_version = "3.7"
