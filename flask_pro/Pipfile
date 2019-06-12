@@ -1,6 +1,6 @@
 [[source]]
 name = "pypi"
-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+url = "http://mirrors.aliyun.com/pypi/simple/"
 verify_ssl = true
 
 [dev-packages]
@@ -16,6 +16,11 @@ flask-ckeditor = "*"
 flask-sqlalchemy = "*"
 pylint-flask = "*"
 flask-migrate = "*"
+flask-email = "*"
+flask-mail = "*"
+flask-boostrap = "*"
+bootstrap-flask = "*"
+flask-bootstrap = "*"
 
 [requires]
 python_version = "3.7"
