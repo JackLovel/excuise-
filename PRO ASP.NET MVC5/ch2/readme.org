@@ -1,4 +1,0 @@
-*** display 
-[[file:img/1.png]]
-[[file:img/2.png]]
-[[file:img/3.png]]

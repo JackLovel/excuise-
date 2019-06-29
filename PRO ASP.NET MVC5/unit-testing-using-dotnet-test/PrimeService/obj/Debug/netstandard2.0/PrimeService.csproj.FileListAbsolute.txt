@@ -1,9 +1,0 @@
-/home/w/Documents/CodePro/excuise-/PRO ASP.NET MVC5/unit-testing-using-dotnet-test/PrimeService/bin/Debug/netstandard2.0/PrimeService.deps.json
-/home/w/Documents/CodePro/excuise-/PRO ASP.NET MVC5/unit-testing-using-dotnet-test/PrimeService/bin/Debug/netstandard2.0/PrimeService.dll
-/home/w/Documents/CodePro/excuise-/PRO ASP.NET MVC5/unit-testing-using-dotnet-test/PrimeService/bin/Debug/netstandard2.0/PrimeService.pdb
-/home/w/Documents/CodePro/excuise-/PRO ASP.NET MVC5/unit-testing-using-dotnet-test/PrimeService/obj/Debug/netstandard2.0/PrimeService.csprojAssemblyReference.cache
-/home/w/Documents/CodePro/excuise-/PRO ASP.NET MVC5/unit-testing-using-dotnet-test/PrimeService/obj/Debug/netstandard2.0/PrimeService.csproj.CoreCompileInputs.cache
-/home/w/Documents/CodePro/excuise-/PRO ASP.NET MVC5/unit-testing-using-dotnet-test/PrimeService/obj/Debug/netstandard2.0/PrimeService.AssemblyInfoInputs.cache
-/home/w/Documents/CodePro/excuise-/PRO ASP.NET MVC5/unit-testing-using-dotnet-test/PrimeService/obj/Debug/netstandard2.0/PrimeService.AssemblyInfo.cs
-/home/w/Documents/CodePro/excuise-/PRO ASP.NET MVC5/unit-testing-using-dotnet-test/PrimeService/obj/Debug/netstandard2.0/PrimeService.dll
-/home/w/Documents/CodePro/excuise-/PRO ASP.NET MVC5/unit-testing-using-dotnet-test/PrimeService/obj/Debug/netstandard2.0/PrimeService.pdb
