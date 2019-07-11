@@ -50,6 +50,7 @@ class Example(QMainWindow):
                 data = f.read()
                 self.textEdit.setText(data)
 
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = Example()
