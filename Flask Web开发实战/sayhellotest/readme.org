@@ -1,0 +1,27 @@
+** 环境
+#+BEGIN_SRC 
+$ pipenv install 
+$ pipenv shell 
+
+$ flask forge
+$ flask run
+#+END_SRC
+
+** 依赖包
+- 安装
+#+BEGIN_SRC 
+# 比如：安装 flask 包
+$ pipenv install flask 
+#+END_SRC
+
+- 安装包列表
+
+|------------------|
+| 包名             |
+| flask            |
+| boostrap-flask   |
+| flask-sqlalchemy |
+| faker            |
+| python-dotenv    |
+| click            |
+| flask-wtf        |
