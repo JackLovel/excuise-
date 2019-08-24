@@ -35,11 +35,12 @@ def fake_categories(count=10):
 def fake_posts(count=50):
     for i in range(count):
         post = Post(
-            title=fake.sentence,
+            title=fake.sentence(),
             body = fake.text(2000),
             category=Category.query.get(random.randint(1, Category.query.count())),
             timestamp=fake.date_time_this_year()
         )
+
         db.session.add(post)
     db.session.commit()
 
@@ -47,7 +48,7 @@ def fake_posts(count=50):
 def fake_comments(count=500):
     for i in range(count):
         comment = Comment(
-            author=fake.name,
+            author=fake.name(),
             email=fake.email(),
             site=fake.url(),
             body=fake.sentence(),
@@ -61,13 +62,13 @@ def fake_comments(count=500):
     for i in range(salt):
         # unreviewed comments
         comment = Comment(
-            author=fake.name,
+            author=fake.name(),
             email=fake.email(),
             site=fake.url(),
             body=fake.sentence(),
             timestamp=fake.date_time_this_year(),
             reviewed=False,
-            post=Post.query.get(random.randint(1, Post.query.count))
+            post=Post.query.get(random.randint(1, Post.query.count()))
         )
         db.session.add(comment)
 

@@ -21,5 +21,5 @@ def show_category(category_id):
 
 
 @blog_bp.route('/post/<int:post_id>', methods=['GET', 'POST'])
-def show_category(post_id):
+def show_post(post_id):
     return render_template('blog/post.html')

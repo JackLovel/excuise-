@@ -7,7 +7,7 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 
 
-boostrap = Bootstrap()
+bootstrap = Bootstrap()
 db = SQLAlchemy()
 ckeditor = CKEditor()
 mail = Mail()

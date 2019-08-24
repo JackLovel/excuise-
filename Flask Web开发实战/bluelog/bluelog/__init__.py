@@ -8,7 +8,8 @@ from flask import Flask, render_template
 from bluelog.blueprints.admin import admin_bp
 from bluelog.blueprints.auth import auth_bp
 from bluelog.blueprints.blog import blog_bp
-from bluelog.extensions import Admin, Post, Category, Comment, Link
+from bluelog.extensions import bootstrap, db, ckeditor, mail, moment
+from bluelog.models import Admin, Post, Category, Comment, Link
 from bluelog.settings import config
 
 basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -105,7 +106,6 @@ def register_commands(app):
         click.echo('Generating the administrator...')
         fake_admin()
 
-        
         click.echo('Generating %d categories...' % category)
         fake_categories(category)
 
