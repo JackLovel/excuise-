@@ -154,6 +154,12 @@ void MainWindow::showCarDetails(QModelIndex index) {
     QSqlRecord record = carModel->record(index.row());
 
     QString factory = record.value("manufactory").toString();
+    QString name = record.value("name").toString();
+    QString year = record.value("year").toString();
+    QString carId = record.value("carid").toString();
+
+    showFactoryProfile()
+
 
 }
 
