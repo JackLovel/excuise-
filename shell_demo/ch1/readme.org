@@ -1,0 +1,4 @@
+#+BEGIN_SRC 
+// 添加到 PATH
+export PATH="$PATH:/home/gog/bin"
+#+END_SRC
