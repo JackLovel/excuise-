@@ -1,2 +1,2 @@
 ** 目录
-- [[./upload_flle][upload_file]], 上传文件
+- [[./upload_flle][upload_file]]: 上传文件, gem => carrierwave
