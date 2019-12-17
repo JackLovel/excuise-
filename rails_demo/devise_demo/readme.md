@@ -13,4 +13,4 @@ $ bundle install  # 安装
 
 ## 参考
 - [Devise in rails](https://wdi-sg.github.io/gitbook-2019/06-ruby-rails/rails-security/devise.html)
-- []()
+- [Adding Authentication with Devise](https://guides.railsgirls.com/devise)
