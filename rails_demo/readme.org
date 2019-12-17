@@ -1,2 +1,3 @@
 ** 目录
-- [[][upload_file]], 上传文件
+- [[./upload_flle][upload_file]]: 上传文件, gem => carrierwave
+- [[.][devise]]: 登录，权限管理，gem => devise
