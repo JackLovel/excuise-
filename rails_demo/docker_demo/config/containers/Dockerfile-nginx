@@ -1,0 +1,7 @@
+FROM nginx 
+
+RUN apt update -y 
+
+ENV RAILS_ROOT /var/www/railsapp
+
+WORKDIR
