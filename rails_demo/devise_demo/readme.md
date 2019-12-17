@@ -8,7 +8,10 @@ $ bundle install  # 安装
 
 - 配置
 ```
-
+$ rails g devise:install
+$ rails g devise:views
+$ rails g devise user # create user model
+$ rails db:migrate
 ```
 
 ## 参考
