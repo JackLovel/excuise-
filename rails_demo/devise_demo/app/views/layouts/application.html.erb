@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= link_to '登出', sign_out_path, method: :delete %>
+      <%= link_to '修改密码', "#", method: :delete %>
+    <% else %>
+      <%= link_to '注册', sign_up_path %>
+      <%= link_to '登入', sign_in_path %>
+  <% end %>
     <p class="alert alert-success"><%= notice %></p>
     <p class="alert alert-success"><%= alert %></p>
       
