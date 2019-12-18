@@ -1,0 +1,13 @@
+<b>Users</b>
+
+<ul id="users">
+  <%= render @users %>
+</ul>
+
+<br>
+
+<%= form_with(model: @user) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
