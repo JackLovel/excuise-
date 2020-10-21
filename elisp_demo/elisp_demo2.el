@@ -53,3 +53,22 @@
 
 ;; File
 (open-file "~/")
+(insert-file-contents "./elisp_demo.el")
+
+(file-name-directory "./elisp_demo.el")
+
+;; get filename's suffix 
+(file-name-extension "./elisp_demo.el")
+
+;;
+(file-name-sans-extension "./elisp_demo.el")
+
+;;
+(defun insert-p-tag ()
+  "insert <p></p> at cursor point"
+  (interactive)
+  (insert "<p></p>")
+  (backward-char 4))
+
+(insert-p-tag)
+
