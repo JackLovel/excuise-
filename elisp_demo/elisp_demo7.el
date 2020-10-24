@@ -18,3 +18,20 @@
        (line-beginning-position)
        (line-end-position)))
 
+;; read file  
+(defun get-string-from-file (filePath)
+  "return filepath's file content."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (buffer-string)))
+
+(get-string-from-file "./test7.txt")
+
+;; 
+(defun read-lines  (filePath)
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (split-string (buffer-string) "\n" t)))
+
+(read-lines "./test7.txt")
+
