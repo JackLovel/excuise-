@@ -88,3 +88,12 @@ class Student extends Person {
 
 const s1 = new Student('li', 14, '1')
 s1.study()
+
+
+abstract class Package {
+    constructor(public weight: number) {}
+    abstract calculate(): number
+    printPackage() {
+        console.log(`weight: ${this.weight}, cal: ${this.calculate()} yuan`)
+    }
+}

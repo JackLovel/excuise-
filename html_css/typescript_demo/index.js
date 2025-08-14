@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const obj = {
     width: 10,
     height: 15
@@ -61,4 +59,13 @@ class Student extends Person {
 }
 const s1 = new Student('li', 14, '1');
 s1.study();
+class Package {
+    constructor(weight) {
+        this.weight = weight;
+    }
+    printPackage() {
+        console.log(`weight: ${this.weight}, cal: ${this.calculate()} yuan`);
+    }
+}
+export {};
 //# sourceMappingURL=index.js.map
