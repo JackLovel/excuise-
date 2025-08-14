@@ -1,0 +1,78 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/nama/Documents/git_pro/ex_demo/dotnet_demo/MemoryPack_demo/MemoryPack_demo.csproj": {}
+  },
+  "projects": {
+    "/Users/nama/Documents/git_pro/ex_demo/dotnet_demo/MemoryPack_demo/MemoryPack_demo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/nama/Documents/git_pro/ex_demo/dotnet_demo/MemoryPack_demo/MemoryPack_demo.csproj",
+        "projectName": "MemoryPack_demo",
+        "projectPath": "/Users/nama/Documents/git_pro/ex_demo/dotnet_demo/MemoryPack_demo/MemoryPack_demo.csproj",
+        "packagesPath": "/Users/nama/.nuget/packages/",
+        "outputPath": "/Users/nama/Documents/git_pro/ex_demo/dotnet_demo/MemoryPack_demo/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/nama/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/opt/homebrew/Cellar/dotnet/9.0.7/libexec/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "BenchmarkDotNet": {
+              "target": "Package",
+              "version": "[0.15.2, )"
+            },
+            "MemoryPack": {
+              "target": "Package",
+              "version": "[1.21.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.7/libexec/sdk/9.0.108/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
