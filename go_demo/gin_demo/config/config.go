@@ -7,31 +7,30 @@ import (
 )
 
 type Config struct {
-    App struct {
-        Name string
-        Port string
-    }
-    Database struct {
-        Host string
-        Port string
-        User string
-        Password string
-        Name string
-    }
+	App struct {
+		Name string
+		Port string
+	}
+	Database struct {
+		Dsn             string
+		MaxIdleConns    int
+		MaxOpenConns    int
+	}
 }
 
 var AppConfig *Config
+
 func InitConfig() {
-    viper.SetConfigName("config")
-    viper.SetConfigType("yml")
-    viper.AddConfigPath("./config")
-    if err := viper.ReadInConfig(); err != nil {
-        log.Fatalf("error read config %v", err)
-    }
+	viper.SetConfigName("config")
+	viper.SetConfigType("yml")
+	viper.AddConfigPath("./config")
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatalf("error read config %v", err)
+	}
 
-    AppConfig = &Config { }
-    if err := viper.Unmarshal(AppConfig); err != nil {
-        log.Fatalf("xx %v", err)
-    }
+	AppConfig = &Config{}
+	if err := viper.Unmarshal(AppConfig); err != nil {
+		log.Fatalf("xx %v", err)
+	}
+    InitDb()
 }
-

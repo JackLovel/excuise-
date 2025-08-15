@@ -1,11 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"gin_demo/config"
+	"gin_demo/router"
 )
 
 func main() {
-    config.InitConfig()
-    fmt.Println(config.AppConfig.App.Port)
+	config.InitConfig()
+    r := router.SetupRouter()
+    r.Run(config.AppConfig.App.Port)
 }
