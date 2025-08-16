@@ -1,9 +1,21 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type User struct {
-    gorm.Model
-    Username string `gorm:"unique"`
-    Password string
+	gorm.Model
+	Username string `gorm:"unique"`
+	Password string
+}
+
+type ExchangeRate struct {
+	ID           uint      `gorm:"primarykey" json:"_id"`
+	FromCurrency string    `json:"fromCurrency" binding:"required"`
+	ToCurrency   string    `json:"toCurrency" binding:"required"`
+	Rate         float64   `json:"rate" binding:"required"`
+	Date         time.Time `json:"date"`
 }

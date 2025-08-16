@@ -50,8 +50,8 @@ func Login(ctx *gin.Context) {
         return
     }
     var user models.User
-    if err := global.Db.Where("username = ?", input.Username); err != nil {
-        ctx.JSON(http.StatusUnauthorized, gin.H {"error": "wrong credentials"})
+    if err := global.Db.Where("username = ?", input.Username).First(&user).Error; err != nil {
+        ctx.JSON(http.StatusUnauthorized, gin.H {"error": err.Error()})
         return
     }
     if !utils.CheckPassword(input.Password, user.Password) {
