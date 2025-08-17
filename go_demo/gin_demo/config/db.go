@@ -9,7 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func InitDb() {
+func initDb() {
     dsn := AppConfig.Database.Dsn
     db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
     if err != nil {

@@ -31,5 +31,6 @@ func InitConfig() {
 	if err := viper.Unmarshal(AppConfig); err != nil {
 		log.Fatalf("xx %v", err)
 	}
-    InitDb()
+    initDb()
+    initRedis()
 }

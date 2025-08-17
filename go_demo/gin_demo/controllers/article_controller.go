@@ -36,15 +36,15 @@ func GetArticles(ctx *gin.Context) {
 }
 
 func GetArticleByID(ctx *gin.Context) {
-    id := ctx.Param("id")
-    var article models.Article
-    if err := global.Db.Where("id = ?", id).First(&article).Error; err != nil {
-        if errors.Is(err, gorm.ErrRecordNotFound) {
-            ctx.JSON(http.StatusNotFound, gin.H {"error": err.Error()})
-        } else {
-            ctx.JSON(http.StatusInternalServerError, gin.H {"error": err.Error()})
-        }
-        return
-    }
-    ctx.JSON(http.StatusOK, article)
+	id := ctx.Param("id")
+	var article models.Article
+	if err := global.Db.Where("id = ?", id).First(&article).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			ctx.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+		} else {
+			ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		}
+		return
+	}
+	ctx.JSON(http.StatusOK, article)
 }
