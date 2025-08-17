@@ -8,7 +8,7 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-func LinkArticle(ctx *gin.Context) {
+func LikeArticle(ctx *gin.Context) {
 	articleID := ctx.Param("id")
 	likeKey := "article:" + articleID + ":likes"
 	if err := global.RedisDB.Incr(ctx, likeKey).Err(); err != nil {

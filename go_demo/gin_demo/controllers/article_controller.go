@@ -29,6 +29,11 @@ func CreateArticle(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
+
+    if err := global.RedisDB.Del(ctx, cacheKey).Err(); err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+    }
 	ctx.JSON(http.StatusCreated, article)
 }
 func GetArticles(ctx *gin.Context) {
@@ -49,6 +54,7 @@ func GetArticles(ctx *gin.Context) {
 			ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
+        ctx.JSON(http.StatusOK, articles)
 	} else if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

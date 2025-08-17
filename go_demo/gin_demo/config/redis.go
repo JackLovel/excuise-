@@ -12,7 +12,7 @@ func initRedis() {
 	RedisClient := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		DB:       0,
-		Password: "",
+		Password: "123123",
 	})
 	ctx := context.Background()
 	_, err := RedisClient.Ping(ctx).Result()
