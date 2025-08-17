@@ -12,7 +12,7 @@ import (
 func CreateExchangeRate(ctx *gin.Context) {
      var exchangeRate models.ExchangeRate
 
-     if err := ctx.ShouldBindJSON(exchangeRate); err != nil {
+     if err := ctx.ShouldBindJSON(&exchangeRate); err != nil {
         ctx.JSON(http.StatusBadRequest, gin.H { "error": err.Error() })
         return
      }
