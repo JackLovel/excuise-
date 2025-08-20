@@ -5,13 +5,14 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "bun --watch server.js"
+    "dev": "bun --watch ./server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.12.1",
   "dependencies": {
+    "@dotenvx/dotenvx": "^1.49.0",
     "cors": "^2.8.5",
     "express": "^5.1.0"
   }

@@ -1,12 +1,13 @@
-import express, { response } from 'express'
+import express from 'express'
 import {readFile, writeFile} from 'node:fs/promises'
-import {cors} from 'cors'
+import cors from 'cors'
+import '@dotenvx/dotenvx/config'
 
 const app = express()
 app.use(cors())
 app.use(express.json()) // parse json
 
-const port = 3001
+// const port = 3001
 app.get('/todos', async (_req, res) => {
     const todosData = await readFile('./data.json', 'utf-8')
     const todos = JSON.parse(todosData)
@@ -79,8 +80,8 @@ app.post('/todos/update', async (req, res) => {
     })
 })
 
-app.listen(port, () => {
-    console.log(`run http:localhost:/${port}`)
+app.listen(process.env.port, () => {
+    console.log(`run http:localhost:${process.env.port}`)
 })
 
 app
