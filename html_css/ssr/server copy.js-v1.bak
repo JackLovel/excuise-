@@ -2,16 +2,22 @@ import express, { response } from 'express'
 import {readFile, writeFile} from 'node:fs/promises'
 import {cors} from 'cors'
 
+
 const app = express()
 app.use(cors())
 app.use(express.json()) // parse json
 
 const port = 3001
+app.get('/', (req, res) => {
+    console.dir(req.params)
+    res.send('hahh12121212as')
+})
 app.get('/todos', async (_req, res) => {
     const todosData = await readFile('./data.json', 'utf-8')
     const todos = JSON.parse(todosData)
     return res.status(200).json(todos)
 })
+
 app.get('/todos/:todoId', async (req, res) => {
     const todoData = await readFile('./data.json', 'utf-8')
     const todos = JSON.parse(todoData)
@@ -26,7 +32,7 @@ app.get('/todos/:todoId', async (req, res) => {
         '404 not found'
     )
 })
-app.delete('/todos/delete/:todoId', async (req, res) => {
+app.get('/todos/delete/:todoId', async (req, res) => {
     const todoData = await readFile('./data.json', 'utf-8')
     const todos = JSON.parse(todoData)
     const todoId = req.params.todoId
@@ -38,7 +44,20 @@ app.delete('/todos/delete/:todoId', async (req, res) => {
     })
 })
 
-app.post('/todos/add', async (req, res) => {
+/**
+app.get('/todos/add/:addTodo', async (req, res) => {
+    const todoData = await readFile('./data.json', 'utf-8')
+    const todos = JSON.parse(todoData)
+    const addTodo = req.params.addTodo
+    const parsedAddTodo = JSON.parse(addTodo)
+    const updatedTodos = [...todos, parsedAddTodo]
+    await writeFile('./data.json', JSON.stringify(updatedTodos), 'utf-8')
+    return res.status(404).json({
+        message: 'todo added success'
+    })
+})
+**/
+app.get('/todos/add', async (req, res) => {
     const todoData = await readFile('./data.json', 'utf-8')
     const todos = JSON.parse(todoData)
     const addTodo = req.body
@@ -59,11 +78,11 @@ app.post('/todos/add', async (req, res) => {
     })
 })
 
-app.post('/todos/update', async (req, res) => {
+app.get('/todos/update/:updateTodo', async (req, res) => {
     const todoData = await readFile('./data.json', 'utf-8')
     const todos = JSON.parse(todoData)
-    const updateTodo = req.body
-    //const parseUpdateTodo = JSON.parse(updateTodo)
+    const updateTodo = req.params.updateTodo
+    const parseUpdateTodo = JSON.parse(updateTodo)
     const updatedTodos = todos.map((todo) => {
         if (todo.id === parseUpdateTodo.id) {
             return {
