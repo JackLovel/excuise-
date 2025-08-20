@@ -5,8 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "dotenvx run -- node --watch ./server.js",
-    "dev-envx": "dotenvx run -- node --watch ./server.js"
+    "dev": "dotenvx run -- node --watch ./src/server.js",
+    "dev-envx": "dotenvx run -- node --watch ./src/server.js"
   },
   "keywords": [],
   "author": "",
