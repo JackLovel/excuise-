@@ -6,4 +6,5 @@ const app = express()
 app.use(cors())
 app.use(express.json()) // parse json
 app.use('/v1', router)
+// app.use('', router)
 export default app;
