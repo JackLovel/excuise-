@@ -1,8 +1,8 @@
 import express from 'express'
 import '@dotenvx/dotenvx/config'
-import { getTodos, addTodo, updateTodo, getTodoById, deleteTodo } from '../services/todoService.js';
+import { createTodo, deleteTodoById, getTodoById, getTodos, updateTodo } from '../controllers/TodoController.js';
 const router = express.Router();
-router.route('/todos').get(getTodos).post(addTodo).patch(updateTodo)
-router.route('/todos/:todoId').get(getTodoById).delete(deleteTodo);
+router.route('/todos').get(getTodos).post(createTodo).patch(updateTodo)
+router.route('/todos/:todoId').get(getTodoById).delete(deleteTodoById);
 
 export default router

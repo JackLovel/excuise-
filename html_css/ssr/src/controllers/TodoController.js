@@ -1,19 +1,18 @@
 import {readFile, writeFile} from 'node:fs/promises'
 import '@dotenvx/dotenvx/config'
+import  { getTodoByIdApi, getAllTodos,deleteTodoByIdApi, createTodoApi, updateTodoApi } from "../services/todoService"
 
-export  const getTodos = async (_req, res) => {
-    const todosData = await readFile('./data.json', 'utf-8')
-    const todos = JSON.parse(todosData)
+export async function getTodos (_req, res) {
+    const todos = await getAllTodos();
     return res.status(200).json(todos)
 }
 
 export const  getTodoById = async (req, res) => {
-    const todoData = await readFile('./data.json', 'utf-8')
-    const todos = JSON.parse(todoData)
     const todoId = req.params.todoId
-    console.log('todos')
-    console.log(todos)
-    const todo = todos.find((todo) => todo.id === Number(todoId))
+    if (!todoId) {
+        return res.status(400).json('todoId is requred')
+    }
+    const todo = getTodoByIdApi(todoId)
     if (todo) {
         return res.status(200).json(todo)
     }
@@ -22,54 +21,34 @@ export const  getTodoById = async (req, res) => {
     )
 }
 
-export const deleteTodo = async (req, res) => {
-    const todoData = await readFile('./data.json', 'utf-8')
-    const todos = JSON.parse(todoData)
+export const deleteTodoById = async (req, res) => {
     const todoId = req.params.todoId
-    const filterTodos = todos.filter((todo) => todo.id !== Number(todoId))
-
-    await writeFile('./data.json', JSON.stringify(filterTodos), 'utf-8')
+    if (!todoId) {
+        return res.status(400).send('todoid is required')
+    }
+    await deleteTodoByIdApi(todoId)
     return res.status(200).json({
         message: 'todo deleted success!'
     })
 }
 
-export const addTodo = async (req, res) => {
-    const todoData = await readFile('./data.json', 'utf-8')
-    const todos = JSON.parse(todoData)
+export const createTodo = async (req, res) => {
     const addTodo = req.body
     if (!addTodo) {
-        return res.status(404).json({
+        return res.status(400).json({
             message: 'Bad request'
         })
     }
+    const addedTodo = await createTodoApi(addTodo)
 
-    const updatedTodos = [
-        ...todos,
-        addTodo
-    ]
-
-    await writeFile('./data.json', JSON.stringify(updatedTodos), 'utf-8')
     return res.status(404).json({
         message: 'todo added success'
     })
 }
 
 export const updateTodo =  async (req, res) => {
-    const todoData = await readFile('./data.json', 'utf-8')
-    const todos = JSON.parse(todoData)
     const updateTodo = req.body
-    //const parseUpdateTodo = JSON.parse(updateTodo)
-    const updatedTodos = todos.map((todo) => {
-        if (todo.id === parseUpdateTodo.id) {
-            return {
-                ...todo,
-                ...parseUpdateTodo
-            }
-        }
-        return todo;
-    })
-    await writeFile('./data.json', JSON.stringify(updatedTodos), 'utf-8')
+    await updateTodoApi(updateTodo)
     return res.status(404).json({
         message: 'todo update success'
     })

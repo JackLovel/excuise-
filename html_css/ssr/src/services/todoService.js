@@ -1,52 +1,32 @@
 import '@dotenvx/dotenvx/config'
 import Todo from '../models/todoModel';
-export async function getTodos(_req, res) {
+export async function getAllTodos() {
     const todosData = await Todo.findAll();
-    return res.status(200).json(todosData)
+    return todosData
 }
-export async function getTodoById(req, res) {
-    const todoId = req.params.todoId
-    const todo = Todo.findAll({
+export async function getTodoByIdApi(todoId) {
+    const todo = await Todo.findOne({
         where: {
-            id: Number(todoId),
+            id: todoId
         },
     });
-    if (todo) {
-        return res.status(200).json(todo)
-    }
-    return res.status(404).send(
-        '404 not found'
-    )
+    return todo
 }
-export async function deleteTodo(req, res) {
-    const todoId = req.params.todoId
+export async function deleteTodoByIdApi(todoId) {
     await Todo.destroy({
         where: {
             id: Number(todoId),
         },
     });
-    return res.status(200).json({
-        message: 'todo deleted success!'
-    })
 }
-export async function addTodo(req, res) {
-    const addTodo = req.body
-    if (!addTodo) {
-        return res.status(404).json({
-            message: 'Bad request'
-        })
-    }
+export async function createTodoApi(newTodo) {
     await Todo.create({
-        content: addTodo.content,
-        tag: addTodo.tag,
-        title: addTodo.title,
+        content: newTodo.content,
+        tag: newTodo.tag,
+        title: newTodo.title,
     });
-    return res.status(404).json({
-        message: 'todo added success'
-    })
 }
-export async function updateTodo(req, res) {
-    const updateTodo = req.body
+export async function updateTodoApi(updateTodo) {
     await Todo.update(
         {
             title: updateTodo.title,
@@ -59,7 +39,4 @@ export async function updateTodo(req, res) {
             },
         },
     );
-    return res.status(404).json({
-        message: 'todo update success'
-    })
 }
